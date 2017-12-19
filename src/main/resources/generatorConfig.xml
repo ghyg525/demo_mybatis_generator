@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+
+	<!-- 一个数据库一个context -->
+	<context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">
+
+		<!-- 自定义插件, 用于修改默认生成的方法名等 -->
+		<plugin type="config.PluginConfig"></plugin>
+
+		<!-- 注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /><!-- 阻止生成注释 -->
+			<property name="suppressDate" value="true" /><!-- 阻止生成的注释包含时间戳 -->
+		</commentGenerator>
+
+
+		<!-- jdbc连接 -->
+		<jdbcConnection connectionURL="jdbc:mysql://localhost:3306/test"
+			driverClass="com.mysql.jdbc.Driver" userId="root" password="admin" />
+
+
+		<!-- 生成实体类地址 -->
+		<javaModelGenerator targetPackage="entity" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" /><!-- 根据catalog和schema来生成子包 -->
+			<property name="trimStrings" value="true" /><!-- 是否对数据库查询结果进行trim操作 -->
+		</javaModelGenerator>
+
+		<!-- 生成mapxml文件 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" /><!-- 根据catalog和schema来生成子包 -->
+		</sqlMapGenerator>
+
+		<!-- 生成mapxml对应client，也就是接口mapper接口,  type=ANNOTATEDMAPPER 为注解方式, XMLMAPPER为xml方式-->
+		<javaClientGenerator targetPackage="dao" targetProject="src/main/java" type="XMLMAPPER" />
+
+
+
+		<!-- 配置表信息 拒绝生成Example实体-->
+		<table tableName="user" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+
+
+
+	</context>
+</generatorConfiguration>
