@@ -14,3 +14,6 @@
 
 - 执行命令: mvn mybatis-generator:generate
 
+
+第一次运行前需要先 mvn install
+

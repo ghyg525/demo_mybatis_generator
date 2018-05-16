@@ -17,23 +17,23 @@
 
 
 		<!-- jdbc连接 -->
-		<jdbcConnection connectionURL="jdbc:mysql://localhost:3306/test"
+		<jdbcConnection connectionURL="jdbc:mysql://localhost:3306/admin"
 			driverClass="com.mysql.jdbc.Driver" userId="root" password="admin" />
 
 
 		<!-- 生成实体类地址 -->
-		<javaModelGenerator targetPackage="entity" targetProject="src/main/java">
+		<javaModelGenerator targetPackage="com.entity" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" /><!-- 根据catalog和schema来生成子包 -->
 			<property name="trimStrings" value="true" /><!-- 是否对数据库查询结果进行trim操作 -->
 		</javaModelGenerator>
 
 		<!-- 生成mapxml文件 -->
-		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/java">
+		<sqlMapGenerator targetPackage="com.mapper" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" /><!-- 根据catalog和schema来生成子包 -->
 		</sqlMapGenerator>
 
 		<!-- 生成mapxml对应client，也就是接口mapper接口,  type=ANNOTATEDMAPPER 为注解方式, XMLMAPPER为xml方式-->
-		<javaClientGenerator targetPackage="dao" targetProject="src/main/java" type="XMLMAPPER" />
+		<javaClientGenerator targetPackage="com.dao" targetProject="src/main/java" type="XMLMAPPER" />
 
 
 
